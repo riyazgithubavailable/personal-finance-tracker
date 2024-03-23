@@ -10,19 +10,19 @@ const Cards = ({income, expense, currentBalance, showExpenseModal,showIncomeModa
 
          <Card bordered={true} className="my-card">
         <h2>Current Balance</h2>
-        <p>₹{currentBalance}</p>
+        <p className='amount'>₹{currentBalance}</p>
         <Button text=" Reset Balance" blue={true} onClick={resetBalance}/> 
            </Card>
 
         <Card bordered={true} className="my-card">
         <h2>Total Income</h2>
-        <p>₹{income}</p>
+        <p className='amount'>₹{income}</p>
         <Button text="Add Income" blue={true} onClick={showIncomeModal}/> 
         </Card>
 
         <Card bordered={true} className="my-card">
         <h2>Total Expenses</h2>
-        <p>₹{expense}</p>
+        <p className='amount'>₹{expense}</p>
         <Button text= "Add Expense" blue={true} onClick={showExpenseModal}/>
         </Card>
 

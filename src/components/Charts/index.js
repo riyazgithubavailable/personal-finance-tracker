@@ -22,23 +22,16 @@ const ChartComponent = ({sortedTransactions}) =>{
         }
      });
        
-     let newSpending = [
-        {tag:"food",amount:0},
-        {tag:"education",amount:0},
-        {tag:"office",amount:0},
-        {tag:"others",amount:0}
-     ];
-     spendingData.forEach((item)=>{
-        if(item.tag=="food"){
-            newSpending[0].amount += item.amount;
-        }else if (item.tag == "education"){
-            newSpending[1].amount +=item.amount;
-        }else if(item.tag=="others") {
-            newSpending[2].amount +=item.amount;
-        }else{
-            newSpending[3].amount +=item.amount;
-        }
-     });
+  
+    let finalSpendings = spendingData.reduce((acc, obj) => {
+      let key = obj.tag;
+      if (!acc[key]) {
+        acc[key] = { tag: obj.tag, amount: obj.amount };
+      } else {
+        acc[key].amount += obj.amount;
+      }
+      return acc;
+    }, {});
       const config = {
         data,
         width:500,
@@ -47,7 +40,7 @@ const ChartComponent = ({sortedTransactions}) =>{
         yField: 'amount',
       };
       const spendingConfig = {
-        newSpending,
+        data: Object.values(finalSpendings),
         width:350,
         //how much space is taken 
         angleField:"amount",
@@ -65,11 +58,11 @@ const ChartComponent = ({sortedTransactions}) =>{
            <div className="pie-chart">
             <h2>Your Spendings</h2>
             <div className="pie">
-            {newSpending.length == 0 ? (
-                    <p>Seems like you haven't spent anything till now...</p>
-                  ) : (
-                    <Pie {...{ ...spendingConfig, data: newSpending }} />
-                  )}
+                   {Object.keys(finalSpendings).length > 0 ? (
+                        <Pie {...spendingConfig} />
+                 ) : (
+                      <p>No spendings yet</p>
+                    )}
                  </div> 
               </div>
              </div>

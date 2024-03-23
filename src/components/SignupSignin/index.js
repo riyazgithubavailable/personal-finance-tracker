@@ -121,7 +121,7 @@ const SignupSignin = () =>{
               createDoc(user);
               setLoading(false);
               navigate("/dashboard")
-              toast.success(`Signed in as ${user.displayName}`);
+              toast.success("User Authenticated");
               
               // IdP data available using getAdditionalUserInfo(result)
               // ...

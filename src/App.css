@@ -1,0 +1,16 @@
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 90vh;
+}
+
+/* .charts{
+  
+  box-Shadow: 0px 0px 30px 8px rgba(227, 227, 227, 0.75);
+  margin: 2rem;
+  border-Radius: 0.5rem;
+  min-Width: 400px;
+  flex: 1,
+} */
